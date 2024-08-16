@@ -14,40 +14,24 @@ using namespace std;
 
 void xajxatel()
 {
-    int n, k;
-    cin >> n >> k;
-    int prev, current;
-    bool sorted = true;
+    int n, x;
+    int ans = -1e9;
+    cin >> n >> x;
 
-    cin >> prev;
-    fo(i, n - 1)
+    int prev = 0;
+    int a;
+    fo(i, n)
     {
-        cin >> current;
-        if (current < prev)
-        {
-            sorted = false;
-        }
-        prev = current;
-    }
 
-    if (sorted)
-    {
-        cout << "YES" << endl;
-        return;
+        cin >> a;
+
+        ans = max(a - prev, ans);
+        prev = a;
     }
 
-    if (k >= n)
-    {
-        cout << "YES" << endl;
-    }
-    else if (k == 1)
-    {
-        cout << "NO" << endl;
-    }
-    else
-    {
-        cout << "YES" << endl;
-    }
+    ans = max(2 * (x - prev), ans);
+
+    cout << ans << endl;
 }
 
 int32_t main()
